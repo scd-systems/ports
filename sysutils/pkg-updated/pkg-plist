@@ -1,4 +1,5 @@
 bin/pkg-updated
-etc/pkg-updated/pkg-updated.conf
+etc/pkg-updated/pkg-updated.conf.sample
 etc/rc.d/pkg-updated
-share/doc/pkg-updated/pkg-updated.pdf
+@dir /var/db/pkg-updated/archive
+@dir /var/db/pkg-updated
