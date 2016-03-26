@@ -40,6 +40,7 @@ do-install:
 	${CP} ${WRKSRC}/pkg-updated ${STAGEDIR}/${PREFIX}/bin/pkg-updated
 	${STRIP_CMD} ${STAGEDIR}/${PREFIX}/bin/pkg-updated
 	${MKDIR} ${STAGEDIR}/${PREFIX}/etc/pkg-updated
+	${MKDIR} ${STAGEDIR}/var/db/pkg-updated/archive
 	${CP} ${WRKSRC}/pkg-updated.conf ${STAGEDIR}/${PREFIX}/etc/pkg-updated/pkg-updated.conf.sample
 	${CP} ${WRKSRC}/rc.d/pkg-updated ${STAGEDIR}/${PREFIX}/etc/rc.d/pkg-updated
 .if ${PORT_OPTIONS:MPDF}
