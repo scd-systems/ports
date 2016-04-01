@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=		pkg-updated
-PORTVERSION=		0.3.1
+PORTVERSION=		0.3.3
 CATEGORIES=		sysutils
 
 MAINTAINER=		cd@scd-systems.net
@@ -21,6 +21,8 @@ PDF_DESC=		Create and install the documentation file (needs tex)
 
 PDF_BUILD_DEPENDS+=	pdflatex:${PORTSDIR}/print/tex-formats dvips:${PORTSDIR}/print/tex-dvipsk
 
+STRIP=			
+
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MPDF}
@@ -38,7 +40,6 @@ do-build:
 
 do-install:
 	${CP} ${WRKSRC}/pkg-updated ${STAGEDIR}/${PREFIX}/bin/pkg-updated
-	${STRIP_CMD} ${STAGEDIR}/${PREFIX}/bin/pkg-updated
 	${MKDIR} ${STAGEDIR}/${PREFIX}/etc/pkg-updated
 	${MKDIR} ${STAGEDIR}/var/db/pkg-updated/archive
 	${CP} ${WRKSRC}/pkg-updated.conf ${STAGEDIR}/${PREFIX}/etc/pkg-updated/pkg-updated.conf.sample
