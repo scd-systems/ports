@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=		pkg-updated
-PORTVERSION=		0.3.3
+PORTVERSION=		0.3.4
 CATEGORIES=		sysutils
 
 MAINTAINER=		cd@scd-systems.net
