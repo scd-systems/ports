@@ -40,4 +40,3 @@ authpf_api_precmd()
 }
 
 run_rc_command "$1"
-
