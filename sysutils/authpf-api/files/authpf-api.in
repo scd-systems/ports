@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+# PROVIDE: authpf_api
+# REQUIRE: NETWORKING
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf to enable authpf-api:
+#
+# authpf_api_enable="YES"
+# authpf_api_config="/usr/local/etc/authpf-api.conf"
+# authpf_api_user="_authpf-api"
+# authpf_api_group="_authpf-api"
+#
+
+. /etc/rc.subr
+
+name="authpf_api"
+rcvar=authpf_api_enable
+
+load_rc_config $name
+
+: ${authpf_api_enable:="NO"}
+: ${authpf_api_config:="/usr/local/etc/authpf-api.conf"}
+: ${authpf_api_user:="_authpf-api"}
+: ${authpf_api_group:="_authpf-api"}
+
+pidfile="/var/run/${name}.pid"
+command="/usr/sbin/daemon"
+command_args="-f -u ${authpf_api_user} -P ${pidfile} -r /usr/local/sbin/authpf-api -c ${authpf_api_config}"
+
+start_precmd="authpf_api_precmd"
+
+authpf_api_precmd()
+{
+	if [ ! -f ${authpf_api_logfile} ]; then
+		touch ${authpf_api_logfile}
+		chown ${authpf_api_user}:${authpf_api_group} ${authpf_api_logfile}
+		chmod 640 ${authpf_api_logfile}
+	fi
+}
+
+run_rc_command "$1"
+

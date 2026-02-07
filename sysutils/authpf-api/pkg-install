@@ -1,0 +1,17 @@
+#!/bin/sh
+
+USER=_authpf-api
+GROUP=_authpf-api
+PW=/usr/sbin/pw
+CHMOD=/bin/chmod
+CHOWN=/usr/sbin/chown
+
+case $2 in
+POST-INSTALL)
+	${PW} group add ${USER}
+	${PW} user add ${USER} -s /sbin/nologin -g ${GROUP}
+    ${CHMOD} 0640 /usr/local/etc/authpf-api.conf.sample
+    ${CHOWN} 0:${GROUP} /usr/local/etc/authpf-api.conf.sample
+    exit 0
+	;;
+esac

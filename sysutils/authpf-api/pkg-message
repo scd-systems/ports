@@ -1,0 +1,38 @@
+[
+{ type: install
+  message: <<EOM
+
+The following group and user have been added:
+
+	_authpf-api:_authpf-api
+
+To start authpf-api for first try:
+
+	cp /usr/local/etc/authpf-api.conf.sample /usr/local/etc/authpf-api.conf
+	sysrc authpf_api_user=root
+	service authpf-api onestart
+
+To run authpf-api as non root user (production):
+
+	Please read the authpf-api.conf section elevator
+	Change the jwtTokenSecret in authpf-api.conf
+
+	Set the daemon user to default user:
+	sysrc authpf_api_user=_authpf-api
+
+To enable authpf-api on startup:
+
+	service authpf-api enable
+
+EOM
+}
+{ type: remove
+  message: <<EOM
+
+The following group and user have been removed:
+
+	_authpf-api:_authpf-api
+
+EOM
+}
+]

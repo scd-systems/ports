@@ -1,0 +1,6 @@
+Authpf-API is a RESTful HTTP API for pf user rules.
+
+The application provides a secure interface for managing packet filter (pf)
+authentication rules on FreeBSD and OpenBSD systems. It allows users to activate
+and deactivate authpf rules through HTTP endpoints with JWT token authentication
+and fine-grained permission control.

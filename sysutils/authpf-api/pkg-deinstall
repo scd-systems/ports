@@ -1,0 +1,13 @@
+#!/bin/sh
+
+USER=_authpf-api
+GROUP=_authpf-api
+PW=/usr/sbin/pw
+
+case $2 in
+POST-DEINSTALL)
+	${PW} group del ${GROUP}
+	${PW} user del ${USER}
+	exit 0
+	;;
+esac

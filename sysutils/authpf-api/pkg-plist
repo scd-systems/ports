@@ -1,0 +1,9 @@
+etc/authpf-api.conf.sample
+sbin/authpf-api
+%%PORTDOCS%%%%DOCSDIR%%/README.md
+%%PORTDOCS%%share/man/man1/authpf-api.1.gz
+%%PORTDOCS%%share/man/man5/authpf-api.conf.5.gz
+%%PORTEXAMPLES%%%%EXAMPLESDIR%%/authpf-api.sudoers
+%%PFCTL_WRAPPER%%sbin/pfctl-wrapper
+%%PFCTL_WRAPPER%%%%PORTDOCS%%%%DOCSDIR%%/README_pfctl_wrapper.md
+%%PFCTL_WRAPPER%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/doas.conf.example
