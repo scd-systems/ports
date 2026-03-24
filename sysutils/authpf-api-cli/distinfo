@@ -1,5 +1,5 @@
-TIMESTAMP = 1770338078
-SHA256 (go/sysutils_authpf-api-cli/authpf-api-cli-v0.2.2/v0.2.2.mod) = 8b1297bcedfb97f187033c610f51b08d863439fcac8fe768c3dc2d5c21e11a25
-SIZE (go/sysutils_authpf-api-cli/authpf-api-cli-v0.2.2/v0.2.2.mod) = 1005
-SHA256 (go/sysutils_authpf-api-cli/authpf-api-cli-v0.2.2/v0.2.2.zip) = 7feddbcde4c7babe3fde7c436446eed24d6999b8cb7f482364da8147b649f4ac
-SIZE (go/sysutils_authpf-api-cli/authpf-api-cli-v0.2.2/v0.2.2.zip) = 37498
+TIMESTAMP = 1774313090
+SHA256 (go/sysutils_authpf-api-cli/authpf-api-cli-v0.3.1/v0.3.1.mod) = b473e9adce2dce9e13fd943e2c5df55e9c08a3c8325d1b046332c7494b752dff
+SIZE (go/sysutils_authpf-api-cli/authpf-api-cli-v0.3.1/v0.3.1.mod) = 1077
+SHA256 (go/sysutils_authpf-api-cli/authpf-api-cli-v0.3.1/v0.3.1.zip) = 677fdb4d3442af052066f6839c487822be042b289675300f3b62e9760d481512
+SIZE (go/sysutils_authpf-api-cli/authpf-api-cli-v0.3.1/v0.3.1.zip) = 37363

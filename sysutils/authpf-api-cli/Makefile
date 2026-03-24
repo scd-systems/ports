@@ -1,6 +1,6 @@
 PORTNAME=	authpf-api-cli
 DISTVERSIONPREFIX= 	v
-DISTVERSION=	0.2.3
+DISTVERSION=	0.3.1
 CATEGORIES=	sysutils
 
 MAINTAINER=	bofh@scd-systems.net
