@@ -10,12 +10,13 @@
 # authpf_api_config="/usr/local/etc/authpf-api.conf"
 # authpf_api_user="_authpf-api"
 # authpf_api_group="_authpf-api"
-#
 
 . /etc/rc.subr
 
 name="authpf_api"
 rcvar=authpf_api_enable
+
+authpf_api_env="PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
 
 load_rc_config $name
 
@@ -23,19 +24,22 @@ load_rc_config $name
 : ${authpf_api_config:="/usr/local/etc/authpf-api.conf"}
 : ${authpf_api_user:="_authpf-api"}
 : ${authpf_api_group:="_authpf-api"}
+: ${authpf_api_loglevel:="info"}
+
+authpf_api_logfile=$(grep 'logfile[[:space:]]*:' ${authpf_api_config} | tr -d ' ' | cut -d':' -f2)
+: ${authpf_api_logfile:="/var/log/authpf-api.log"}
 
 pidfile="/var/run/${name}.pid"
+procname="/usr/local/sbin/authpf-api"
 command="/usr/sbin/daemon"
-command_args="-f -u ${authpf_api_user} -P ${pidfile} -r /usr/local/sbin/authpf-api -c ${authpf_api_config}"
-
+command_args="-cf -p ${pidfile} -S ${procname} -c ${authpf_api_config} -v ${authpf_api_loglevel}"
 start_precmd="authpf_api_precmd"
 
 authpf_api_precmd()
 {
-	if [ ! -f ${authpf_api_logfile} ]; then
-		touch ${authpf_api_logfile}
-		chown ${authpf_api_user}:${authpf_api_group} ${authpf_api_logfile}
-		chmod 640 ${authpf_api_logfile}
+	install -o ${authpf_api_user} -g ${authpf_api_group} -m 0640 /dev/null ${pidfile}
+	if [ ! -f ${authpf_api_logfile} ] ; then 
+		install -o ${authpf_api_user} -g ${authpf_api_group} -m 0640 /dev/null ${authpf_api_logfile}
 	fi
 }
 

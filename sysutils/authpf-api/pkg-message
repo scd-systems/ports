@@ -8,21 +8,37 @@ The following group and user have been added:
 
 To start authpf-api for first try:
 
+	Check your pf for existing table: authpf_users
+	If it does not exist, either create the table or update /usr/local/etc/authpf-api.conf (remove pfTable lines)
+
 	cp /usr/local/etc/authpf-api.conf.sample /usr/local/etc/authpf-api.conf
 	sysrc authpf_api_user=root
 	service authpf-api onestart
 
 To run authpf-api as non root user (production):
 
-	Please read the authpf-api.conf section elevator
-	Change the jwtTokenSecret in authpf-api.conf
+	Please read the authpf-api.conf server section
+	Change the jwtTokenSecret in authpf-api.conf !!!
+
+	Set sudo as elevator command for pfctl:
+		cp /usr/local/etc/authpf-api.conf.sample /usr/local/etc/authpf-api.conf
+		sed -i.bak -e 's/elevatorMode: none/elevatorMode: sudo/g' /usr/local/etc/authpf-api.conf
+		cp /usr/local/share/examples/authpf-api/authpf-api.sudoers /usr/local/etc/sudoers.d/authpf-api
 
 	Set the daemon user to default user:
-	sysrc authpf_api_user=_authpf-api
+		sysrc authpf_api_user=_authpf-api
+		chown _authpf-api /usr/local/etc/authpf-api.conf
 
 To enable authpf-api on startup:
 
 	service authpf-api enable
+
+Troubleshooting:
+
+	Check /var/log/messages for startup issues
+
+	Or run manually in foreground mode:
+		/usr/local/sbin/authpf-api -foreground -v trace -c /usr/local/etc/authpf-api.conf
 
 EOM
 }
