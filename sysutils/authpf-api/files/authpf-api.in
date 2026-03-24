@@ -38,7 +38,7 @@ start_precmd="authpf_api_precmd"
 authpf_api_precmd()
 {
 	install -o ${authpf_api_user} -g ${authpf_api_group} -m 0640 /dev/null ${pidfile}
-	if [ ! -f ${authpf_api_logfile} ] ; then 
+	if [ ! -f ${authpf_api_logfile} ] ; then
 		install -o ${authpf_api_user} -g ${authpf_api_group} -m 0640 /dev/null ${authpf_api_logfile}
 	fi
 }
